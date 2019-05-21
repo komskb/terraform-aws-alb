@@ -11,7 +11,7 @@ AWS ALB를 생성하는 Terraform 모듈 입니다.
 
 ```hcl
 module "alb" {
-  source = "komskb/terraform-aws-alb"
+  source = "komskb/alb/aws"
 
   project = "${var.project}"
   environment = "${var.environment}"
