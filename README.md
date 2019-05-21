@@ -34,6 +34,27 @@ Terraform version 0.11.13 or newer is required for this module to work.
 
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|:----:|:-----:|:-----:|
+| api\_port | Local port service should be running on. Default value is most likely fine. | string | `"5000"` | no |
+| certificate\_arn | certificate arn | string | `""` | no |
+| environment | Deploy environment | string | `"production"` | no |
+| ingress\_cidr\_blocks | List of IPv4 CIDR ranges to use on all ingress rules of the ALB. | list | `[ "0.0.0.0/0" ]` | no |
+| project | Project name to use on all resources created (VPC, ALB, etc) | string | n/a | yes |
+| subnet\_ids | A list of IDs of existing public subnets inside the VPC | list | `[]` | no |
+| tags | A map of tags to use on all resources | map | `{}` | no |
+| vpc\_id | ID of an existing VPC where resources will be created | string | `""` | no |
+
+## Outputs
+
+| Name | Description |
+|------|-------------|
+| dns\_name | The DNS name of the load balancer |
+| id | The ID of the load balancer |
+| security\_group\_id | security group id |
+| target\_group\_arns | Target group arns of the load balancer |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
