@@ -13,24 +13,24 @@ AWS ALB를 생성하는 Terraform 모듈 입니다.
 module "alb" {
   source = "komskb/alb/aws"
 
-  project = "${var.project}"
-  environment = "${var.environment}"
-  vpc_id = "${module.vpc.vpc_id}"
-  subnet_ids = ["${module.vpc.public_subnets}"]
-  ingress_cidr_blocks = ["${var.alb_ingress_cidrs}"]
-  certificate_arn = "${data.aws_acm_certificate.this.arn}"
-  api_port = "${var.api_port}"
+  project = var.project
+  environment = var.environment
+  vpc_id = module.vpc.vpc_id
+  subnet_ids = [module.vpc.public_subnets]
+  ingress_cidr_blocks = [var.alb_ingress_cidrs]
+  certificate_arn = data.aws_acm_certificate.this.arn
+  api_port = var.api_port
 
   tags = {
-    Terraform = "${var.terraform_repo}"
-    Environment = "${var.environment}"
+    Terraform = var.terraform_repo
+    Environment = var.environment
   }
 }
 ```
 
 ## Terraform version
 
-Terraform version 0.11.13 or newer is required for this module to work.
+Terraform version 0.12.0 or newer is required for this module to work.
 
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
