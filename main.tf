@@ -20,7 +20,7 @@ module "alb" {
   load_balancer_name = format("%s-%s-alb", var.project, var.environment)
 
   vpc_id          = var.vpc_id
-  subnets         = [var.subnet_ids]
+  subnets         = var.subnet_ids
   security_groups = [module.alb_https_sg.this_security_group_id, module.alb_http_sg.this_security_group_id]
   logging_enabled = false
 
